@@ -45,7 +45,12 @@ const userSchema = new mongoose.Schema({
   photo: {
     avatars: {
       type: Array,
-      default: []
+      default: [
+        {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Photos'
+      }
+    ]
     }
   },
   status: {

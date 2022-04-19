@@ -17,7 +17,7 @@ exports.getUsers = async (req, res) => {
         ? users[i].followed = true
         : users[i].followed = false
     }
-    let data = JSON.stringify({
+    let data = ({
       users,
       totalUsers
     })
