@@ -233,21 +233,6 @@ url = `${hostURL}/users?page=${page}&limit=${limit}`
 }
 </details>
 
-## VERIFICATION USER:
-method: GET;
-```
-  let verification_URL = `${hostURL}/auth/verify/` + token
-```
-
-<details><summary>resolve</summary>
-{
-    "message": "Your successfully verificating your account",
-    "error": false,
-    "code": 200,
-    "results": null
-}
-<details>
-
 ## GET  AUTHENTICATED USER:
 method: GET;
 ```
