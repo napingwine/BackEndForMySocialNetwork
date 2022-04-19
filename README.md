@@ -260,6 +260,7 @@ method: GET;
     }
   }
 <details>
+
 <details><summary>resolve</summary>
   TO BE CHECKED 
 <details>
