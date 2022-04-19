@@ -233,21 +233,19 @@ url = `${hostURL}/users?page=${page}&limit=${limit}`
 }
 </details>
 
-## GET  AUTHENTICATED USER:
+## VERIFICATION USER:
 method: GET;
 ```
-  URL = '${hostURL}/auth/';
+  let verification_URL = `${hostURL}/auth/verify/` + token
 ```
-<details><summary>request</summary>
-  let options = {
-    headers: {
-      "Authorization": `Bearer ${token}`
-    }
-  }
-<details>
 
 <details><summary>resolve</summary>
-  TO BE CHECKED 
+{
+    "message": "Your successfully verificating your account",
+    "error": false,
+    "code": 200,
+    "results": null
+}
 <details>
 
 ## GET USER BY ID:
@@ -271,7 +269,6 @@ method: GET;
     }
   }
 <details>
-
 <details><summary>resolve</summary>
   TO BE CHECKED
 <details>
