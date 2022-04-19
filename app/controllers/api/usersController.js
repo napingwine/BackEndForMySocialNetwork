@@ -30,7 +30,7 @@ exports.getUsers = async (req, res) => {
 
 exports.getUserByID = async (req, res) => {
   try {
-    return res.status(200).json(JSON.stringify(await user.findById(req.params.userID)))
+    return res.status(200).json(await user.findById(req.params.userID))
   } catch (e) {
     console.log(e);
     return res.status(450).json('user not found');

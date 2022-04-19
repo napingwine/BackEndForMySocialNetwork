@@ -10,14 +10,14 @@ method: POST;
 ```
 url = `${hostURL}/auth/login`
 ```
-<details><summary>1. request</summary>
+<details><summary>request</summary>
   body = {
     email,
     password
   }
 </details>
 
-<details><summary>1. resolve</summary>
+<details><summary>resolve</summary>
 {
     "message": "Login success",
     "error": false,
@@ -28,11 +28,51 @@ url = `${hostURL}/auth/login`
 }
 </details>
 
+## REGISTER USER:
+method: POST;
+```
+  let register_URL = `${hostURL}/auth/register`;
+```
+<details><summary>request</summary>
+  let body = {
+    "name": name,
+    "email": email,
+    "password": password,
+    "surname": surname
+  };
+</details>
+
+<details><summary>resolve</summary>
+{
+    "message": "Register success, please activate your account.",
+    "error": false,
+    "code": 201,
+    "results": {
+        "user": {
+            "id": "625e1c40a7315770f86e6f54",
+            "name": "Vasja6",
+            "email": "vasiliev6@mail.com",
+            "verified": false,
+            "createdAt": "2022-04-19T01:46:31.865Z"
+        },
+        "verification": {
+            "_id": "625e1c40a7315770f86e6f55",
+            "token": "jivO7UGcjUzgYjqqmR85bhrXiiKVhZyQIYpZVrP7z5M2StexVY",
+            "userId": "625e1c40a7315770f86e6f54",
+            "type": "Register New Account",
+            "createdAt": "2022-04-19T02:19:44.550Z",
+            "__v": 0
+        }
+    }
+}
+</details>
+
 ## GET USERS:
+method: GET;
 ```
 url = `${hostURL}/users?page=${page}&limit=${limit}`
 ```
-<details><summary>1. request</summary>
+<details><summary>request</summary>
   let options = {
     headers: {
       "Authorization": `Bearer ${token}`
@@ -40,7 +80,7 @@ url = `${hostURL}/users?page=${page}&limit=${limit}`
   }
 </details>
 
-<details><summary>1. resolve</summary>
+<details><summary>resolve</summary>
 {
     "users": [
         {
@@ -192,3 +232,34 @@ url = `${hostURL}/users?page=${page}&limit=${limit}`
     "totalUsers": 7
 }
 </details>
+
+## VERIFICATION USER:
+method: GET;
+```
+  let verification_URL = `${hostURL}/auth/verify/` + token
+```
+
+<details><summary>resolve</summary>
+{
+    "message": "Your successfully verificating your account",
+    "error": false,
+    "code": 200,
+    "results": null
+}
+<details>
+
+## GET  AUTHENTICATED USER:
+method: GET;
+```
+  URL = '${hostURL}/auth/';
+```
+<details><summary>request</summary>
+  let options = {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  }
+<details>
+<details><summary>resolve</summary>
+  TO BE CHECKED 
+<details>
