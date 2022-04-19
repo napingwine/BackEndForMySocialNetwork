@@ -264,3 +264,29 @@ method: GET;
 <details><summary>resolve</summary>
   TO BE CHECKED 
 <details>
+
+## GET USER BY ID:
+method: GET;
+```
+  URL = '${hostURL}/users/profile/${_id}`;
+```
+<details><summary>resolve</summary>
+  TO BE CHECKED 
+<details>
+
+## GET MY TASKS:
+method: GET;
+```
+  URL = '${hostURL}/users/profile/${_id}`;
+```
+<details><summary>request</summary>
+  let options = {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  }
+<details>
+
+<details><summary>resolve</summary>
+  TO BE CHECKED
+<details>
