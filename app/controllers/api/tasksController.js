@@ -56,6 +56,7 @@ exports.updateTask = async (req, res) => {
   try {
     let taskID = req.body._id;
     let update = req.body.data;
+    console.log(update)
     Task.findByIdAndUpdate(taskID, update).then(someResult => {
       console.log('success, tusk updated')
       return res.status(200).json('task status updated')

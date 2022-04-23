@@ -1,5 +1,5 @@
 const user = require("./../../models/User");
-const { getJwtDataByToken, pagination } = require("../../helpers/common.js");
+const { getJwtDataByToken, pagination, randomString } = require("../../helpers/common.js");
 
 exports.getUsers = async (req, res) => {
   try {
@@ -72,16 +72,34 @@ exports.unFollowUser = async (req, res) => {
 
 exports.uploadMyAvatar = async (req, res) => {
   try {
-    let imageFile = req.files.file;
-    imageFile.mv(`static/${req.files.file.name}`, function (err) {
-      if (err) {
-        return res.status(500).send(err)
+    const jwtData = await getJwtDataByToken(req);
+    let currentUser = await user.findById(jwtData.user.id);
+    let newFileName = randomString(16) + '.' + req.files.file.name.split('.')[1];
+    let oldArrayOfAvatars = currentUser.photo.avatars;
+    let newArrayOfAvatars = [...oldArrayOfAvatars, `${newFileName}`];
+    let update = {
+      photo: {
+        ...currentUser.photo,
+        avatars: newArrayOfAvatars
       }
-      res.json({ file: `public/${req.files.file.name}` })
+    };
+
+    user.findByIdAndUpdate(jwtData.user.id, update, (e) => {
+      if (e) {
+        console.log(e)
+      }
+    });
+
+    let imageFile = req.files.file;
+    imageFile.mv(`static/${newFileName}`, function (e) {
+      if (e) {
+        console.log(e)
+        return res.status(500).send(e)
+      }
     })
+    return res.status(200).json({ file: `${newFileName}` });
   } catch (e) {
     console.log(e)
-    res.status(500).json("error on sending file request")
+    res.status(500).json("error on sending file request");
   }
-
 };

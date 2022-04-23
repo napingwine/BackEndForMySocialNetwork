@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     maxlength: 255,
   },
-  surname:{
+  surname: {
     type: String,
   },
   email: {
@@ -45,12 +45,7 @@ const userSchema = new mongoose.Schema({
   photo: {
     avatars: {
       type: Array,
-      default: [
-        {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Photos'
-      }
-    ]
+      default: []
     }
   },
   status: {

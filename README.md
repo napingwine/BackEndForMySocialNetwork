@@ -248,6 +248,23 @@ method: GET;
 }
 <details>
 
+## GET  AUTHENTICATED USER:
+method: GET;
+```
+  URL = '${hostURL}/auth/';
+```
+<details><summary>request</summary>
+  let options = {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  }
+<details>
+
+<details><summary>resolve</summary>
+  TO BE CHECKED 
+<details>
+
 ## GET USER BY ID:
 method: GET;
 ```
